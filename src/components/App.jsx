@@ -27,7 +27,7 @@ class App extends Component {
       contacts: [newContact, ...contacts],
 
         }));
-        console.log(newContact);
+//        console.log(newContact);
   }
 
 
@@ -49,9 +49,28 @@ class App extends Component {
     );
   };
 
+  componentDidUpdate = (prevProps, prevState, snapshot) => {
+    console.log(prevState);
+    console.log(this.state);
+
+    if(this.state.contacts !== prevState.contacts) {
+      console.log("yessa");
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
+    }
+  }
+
+  componentDidMount = () => {
+    console.log('roar');
+    const contacts = localStorage.getItem('contacts');
+    console.log(contacts);
+    const parsedContacts = JSON.parse(contacts);
+      if (parsedContacts) {
+        this.setState({contacts: parsedContacts});
+      }
+  }
+
   render() {
     const { filter } = this.state;
-//    const {contacts } = this.state;
     const addContact = this.addContact;
     const changeFilter = this.changeFilter;
     const filtredContacts = this.filtredContacts();
