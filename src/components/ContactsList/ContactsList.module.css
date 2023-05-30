@@ -1,0 +1,10 @@
+.list {
+    list-style: none;
+    padding: 0;
+}
+
+.contact {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
