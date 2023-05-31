@@ -1,3 +1,31 @@
 .container {
     margin-left: 40px;
 }
+
+.openButton {
+    cursor: pointer;
+    width: 130px;
+    height: 30px;
+    background-color: rgb(50, 234, 234);
+    border-radius: 5px;
+    border: 1px solid rgb(36, 62, 62);
+}
+
+.closeButton {
+    cursor: pointer;
+    width: 100px;
+    height: 30px;
+    background-color: rgb(50, 234, 234);
+    border-radius: 5px;
+    border: 1px solid rgb(36, 62, 62);
+}
+
+.add {
+    margin: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 35px;
+}

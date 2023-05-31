@@ -4,13 +4,21 @@ import ContactsList from './ContactsList/ContactsList';
 import Form from './Form/Form';
 import Filter from './FilterByName/Filter'
 import Message from './Message/Message';
+import Modal from './Modal/Modal';
 import css from './App.module.css';
 
 class App extends Component {
   state = {
     contacts: [],
     filter: '',
+    showModal: false,
   };
+
+  toggleModal = () => {
+    this.setState(state => ({
+      showModal: !state.showModal
+    }))
+  }
 
   addContact = ({name, number}) => {
     const {contacts} = this.state;
@@ -70,7 +78,7 @@ class App extends Component {
   }
 
   render() {
-    const { filter } = this.state;
+    const { filter, showModal } = this.state;
     const addContact = this.addContact;
     const changeFilter = this.changeFilter;
     const filtredContacts = this.filtredContacts();
@@ -78,7 +86,17 @@ class App extends Component {
     return (
 <div>
 <div className={css.container}>
-  <Form onSubmit={ addContact } />
+  <h1>Phonebook</h1>
+  <button className={css.openButton} type="button" onClick={this.toggleModal}>Add contact 📲</button>
+  {showModal && <Modal>
+  <div className={css.header}>
+    <h2 className={css.add}>Add contact</h2>
+    <button  className={css.closeButton} type="button" onClick={this.toggleModal}>Close</button>
+    </div>
+    <Form onSubmit={ addContact } />
+
+  </Modal>} 
+
   </div>
   <div className={css.container}>
   <Filter filter={filter} changeFilter={changeFilter}/>
@@ -90,6 +108,7 @@ class App extends Component {
         ) : (
           <Message text="Contact list is empty."/>
         )}
+      
         </div>
 </div>
     )

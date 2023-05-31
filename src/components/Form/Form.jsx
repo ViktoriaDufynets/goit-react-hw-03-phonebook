@@ -30,7 +30,7 @@ class Form extends Component {
 
     return (
       <div>
-      <h1>Phonebook</h1>
+
       <form className={css.form} onSubmit={this.handleSubmit}>
         <label>
           <span className={css.field}>Name</span>
