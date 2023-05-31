@@ -88,13 +88,13 @@ class App extends Component {
 <div className={css.container}>
   <h1>Phonebook</h1>
   <button className={css.openButton} type="button" onClick={this.toggleModal}>Add contact 📲</button>
-  {showModal && <Modal>
+  {showModal &&
+  <Modal onClose={this.toggleModal}>
   <div className={css.header}>
     <h2 className={css.add}>Add contact</h2>
     <button  className={css.closeButton} type="button" onClick={this.toggleModal}>Close</button>
     </div>
     <Form onSubmit={ addContact } />
-
   </Modal>} 
 
   </div>
